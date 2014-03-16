@@ -1,7 +1,7 @@
 #----------------------------------------------------------------------
 # Plot randomized kernel with specific mean and SD values.
 #
-source("./code/mykernel.R")         # Sourcing the kernel fucntion.
+source("./functions/mykernel.R")    # Sourcing the kernel fucntion.
 
 # Different types of dispersal Kernels.
 dd<- abs(rnorm(1000, mean = 32.7, sd = 415)) # Normal distrib.
@@ -12,13 +12,13 @@ require(adehabitat) # For simulations of Levy walks
 dd<- simm.levy(1:500, mu = 1.5, burst = "mu = 1.5") # req. adehabitat
 
 # With function mykernel.
-source("/Users/pedro/Dropbox/Working/MS_Megafauna2/Data/code/mykernel.R")
+source("./functions/mykernel.R")
 mykernel(dd, bw= 25, h= 10)
 
 # We can omit the truehist and step directly to the Kernel.
 truehist(dd, xlim= c(0, max(dd)),
          # ylim=c(0,0.012),
-         prob= T, h= 1, xlab= "Distance (m)",
+         prob= T, h= 10, xlab= "Distance (m)",
          ylab= "Probability",col= rgb(0, 0, 1, 0.2),
          lty= 0)
 rug(dd, side= 1, col= "red")
@@ -68,6 +68,7 @@ d3<-density(dd3, bw= 5, from= 0, to= max(dd3)) # add density estimate
 lines(d3, xlim= c(0, max(dd3)), col= "green")
 d4<-density(dd4, bw= 5, from= 0, to= max(dd4)) # add density estimate
 lines(d4, xlim= c(0, max(dd4)), col= "black")
+rug(dd1, side= 1,col= "blue")
 
 ######################################################################
 ### LÉVY WALK CODE 

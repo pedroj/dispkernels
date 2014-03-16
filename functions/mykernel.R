@@ -2,6 +2,13 @@
 # We can omit the truehist and step directly to the Kernel.
 # Input in function call is the data vector of distances and an upper
 # limit for estimating the kernel.
+# Possible startup values: 
+# dd: data vector of distances.
+# up: upper distance limit for estimating the kernel.
+# prob: probability Y axis [TRUE].
+# bw: the smoothing bandwidth to be used for the kernel envelope.
+# h: the bin width.
+# 
 mykernel<- function (dd, up= max(dd), prob= T, 
     bw= 20, h= 10) {
     # up is the X axis maximum limit.
