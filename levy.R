@@ -79,3 +79,21 @@ function (date = 1:500, mu = 2, l0 = 1, x0 = c(0, 0), id = "A1",
     res <- as.ltraj(data.frame(co, si), date, id, burst, typeII = typeII)
     return(res)
 }
+##########################################################################
+# Fat-tailed kernel function. Clark (1998) Amer. Nat.
+# f(x)= c/[2 alpha Tau(1/c)] exp(-|x/alpha |^c)
+# c and h are the shape and distance parameters.
+# The negative exponential (c = 1) and the Gaussian (c = 2) are 
+# special cases of this formula, and c < 1 is considered a fat-tailed
+# kernel. 
+# E.g., c= 0.45, alpha= 21 km.
+
+alpha= 100  # Distance parameter.
+c= 0.35      # Shape parameter.
+for (x in 0:100)
+    curve(1/(c/(2*alpha * gamma(1/c) * exp(-abs(x/alpha)^c))), 
+          from=0, to=100, n=100)
+
+# curve(expr, from = NULL, to = NULL, n = 101, add = FALSE,
+# type = "l", xname = "x", xlab = xname, ylab = NULL,
+# log = NULL, xlim = NULL, ...)
