@@ -1,19 +1,20 @@
 #----------------------------------------------------------------------
 # Plot randomized kernel with specific mean and SD values.
 #
-source("./functions/mykernel.R")    # Sourcing the kernel fucntion.
+require(adehabitatHS) # For simulations of Levy walks
+source("./functions/mykernel.R")    # Sourcing the kernel function.
 
 # Different types of dispersal Kernels.
 dd<- abs(rnorm(1000, mean = 32.7, sd = 415)) # Normal distrib.
 dd<- rweibull(1000, shape= 1, scale = 3.5) # Weibull distrib.
 dd<- rgamma(1000, scale= 100, shape= 10) # Gamma distrib.
 
-require(adehabitat) # For simulations of Levy walks
-dd<- simm.levy(1:500, mu = 1.5, burst = "mu = 1.5") # req. adehabitat
+dd<- as.data.frame(simm.levy(1:500, mu = 1.5, burst = "mu = 1.5")) # req. adehabitatHS
+dd<- na.omit(dd$dist)
 
 # With function mykernel.
 source("./functions/mykernel.R")
-mykernel(dd, bw= 25, h= 10)
+mykernel(dd, bw= 20, h= 2000) # Extract the distances vector
 
 # We can omit the truehist and step directly to the Kernel.
 truehist(dd, xlim= c(0, max(dd)),
@@ -73,7 +74,7 @@ rug(dd1, side= 1,col= "blue")
 ######################################################################
 ### LÉVY WALK CODE 
 ######################################################################
-require(adehabitat)
+require(adehabitatHS)
 set.seed(411)
 w <- simm.levy(1:500, mu = 1.5, burst = "mu = 1.5")
 w <- simm.levy(1:500, mu = 2, burst = "mu = 2")
