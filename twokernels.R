@@ -42,7 +42,7 @@ p<- ggplot(mydd,aes(x=xx)) +
                      fill="red", lty=0, alpha = 0.3) +
     geom_density(data=subset(mydd, yy == 'GC'),
                      fill="blue", lty=0,  alpha = 0.3)
-    
+p    
     
 # These are resampled (randomized) values to visualize a confidence envelope.
 kernelenv <- function (dd) {
