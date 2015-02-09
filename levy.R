@@ -89,7 +89,7 @@ function (date = 1:500, mu = 2, l0 = 1, x0 = c(0, 0), id = "A1",
 # E.g., c= 0.45, alpha= 21 km.
 
 alpha= 100  # Distance parameter.
-c= 0.35      # Shape parameter.
+c= 0.35     # Shape parameter.
 for (x in 0:100)
     curve(1/(c/(2*alpha * gamma(1/c) * exp(-abs(x/alpha)^c))), 
           from=0, to=100, n=100)
