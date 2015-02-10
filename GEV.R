@@ -17,7 +17,13 @@ gevdd<-gev.fit(dd)
 gev.diag(gevdd)
 
 # Prunus mahaleb dispersal distances data. ---------------------------------
-assdist <-read.table("distances.txt",header=TRUE,sep="\t",dec=",",na.strings="NA")
+# Get the data from my GitHub repository.
+require(downloader)
+link = "https://raw.githubusercontent.com/pedroj/dispkernels/blob/master/distances.txt"
+file = "distances.txt"
+if(!file.exists(file)) download(link, file, mode = "wb")
+assdist <- read.table(file, sep = "\t", dec = ".", 
+    header = TRUE, na.strings="NA")
 str(assdist)
 dd<- assdist$dist
 # With function mykernel.
