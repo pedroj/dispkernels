@@ -25,7 +25,7 @@ gev.diag(gevdd)
 # Prunus mahaleb dispersal distances data. ---------------------------------
 # Get the data from my GitHub repository.
 require(downloader)
-link = "https://raw.githubusercontent.com/pedroj/dispkernels/blob/master/distances.txt"
+link = "https://raw.githubusercontent.com/pedroj/dispkernels/master/distances.txt"
 file = "distances.txt"
 if(!file.exists(file)) download(link, file, mode = "wb")
 assdist <- read.table(file, sep = "\t", dec = ".", 
