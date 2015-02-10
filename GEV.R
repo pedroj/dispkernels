@@ -1,13 +1,19 @@
 # Analysis of generalized extreme value (GEV) distributions.
 library(ismev)
 require(adehabitatHS)               # For simulations of Levy walks
-source("./functions/mykernel.R")    # Sourcing the kernel function.
+
+# Sourcing the kernel function code from GitHub.
+require(downloader)
+link = "https://raw.githubusercontent.com/pedroj/dispkernels/master/functions/mykernel.R"
+file = "mykernel.R"
+if(!file.exists(file)) download(link, file, mode = "wb")
+source(file)
 
 # Different types of dispersal Kernels. ------------------------------------
 # dd<- abs(rnorm(1000, mean = 32.7, sd = 415)) # Normal distrib.
-# dd<- rweibull(1000, shape= 1, scale = 3.5) # Weibull distrib.
-# dd<- rgamma(1000, scale= 100, shape= 10) # Gamma distrib.
-                                    # req. adehabitatHS
+# dd<- rweibull(1000, shape= 1, scale = 3.5)   # Weibull distrib.
+# dd<- rgamma(1000, scale= 100, shape= 10)     # Gamma distrib.
+                                               # req. adehabitatHS
 dd<- as.data.frame(simm.levy(1:1000, mu = 1.5, burst = "mu = 1.5")) 
 dd<- na.omit(dd$dist)
 
