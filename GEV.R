@@ -24,3 +24,9 @@ dd<- assdist$dist
 mykernel(dd, bw= 100, h= 50) # Extract the distances vector
 gevdd<-gev.fit(dd)
 gev.diag(gevdd)
+
+# Truncate events after 1200 m to get the within-stand dispersal events
+ddtrunc=dd[dd<1200]
+mykernel(ddtrunc, bw= 100, h= 10) # Extract the distances vector
+gevdd<-gev.fit(ddtrunc)
+gev.diag(gevdd)
