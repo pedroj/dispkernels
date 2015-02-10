@@ -5,7 +5,7 @@ require(adehabitatHS)               # For simulations of Levy walks
 # Sourcing the kernel function code from GitHub.
 require(downloader)
 link = "https://raw.githubusercontent.com/pedroj/dispkernels/master/functions/mykernel.R"
-file = "mykernel.R"
+file = "./functions/mykernel.R"
 if(!file.exists(file)) download(link, file, mode = "wb")
 source(file)
 
