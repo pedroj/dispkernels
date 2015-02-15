@@ -26,7 +26,7 @@ mykernel<- function (dd, up= max(dd), prob= T,
     # Kernel
     d<- density(dd, bw= bw, from= 0, to= up) # add density estimate
     # These are resampled (randomized) values to visualize a confidence envelope.
-    for (k in 1: 500) {
+    for (k in 1: 100) {
         di<- sample(dd, length(dd), replace = T, prob = NULL)
         ddi<- density(di, bw= bw, from= 0, to= up) # add density estimate
         lines(ddi, xlim= c(0, up), col= "grey", lwd= 0.3)

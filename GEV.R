@@ -19,7 +19,10 @@ dd<- as.data.frame(simm.levy(1:1000, mu = 1.5, burst = "mu = 1.5"))
 dd<- na.omit(dd$dist)
 
 # With function mykernel.
-mykernel(dd, bw= 20, h= 2000) # Extract the distances vector
+mykernel(dd, bw= 20, h= 200)     # Extract the distances vector
+ddtrunc=dd[dd<3000]              # Truncate below a distance
+mykernel(ddtrunc, bw= 10, h= 20) # Extract the distances vector
+
 gevdd<-gev.fit(dd)
 gev.diag(gevdd)
 
