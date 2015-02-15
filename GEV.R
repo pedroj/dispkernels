@@ -1,6 +1,6 @@
 # Analysis of generalized extreme value (GEV) distributions.
-library(ismev)
-library(extreme)
+require(ismev)
+require(extreme)
 require(adehabitatHS)               # For simulations of Levy walks
 
 # Sourcing the kernel function code from GitHub.
