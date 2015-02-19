@@ -33,7 +33,7 @@ link = "https://raw.githubusercontent.com/pedroj/dispkernels/master/distances.tx
 file = "distances.txt"
 if(!file.exists(file)) download(link, file, mode = "wb")
 assdist <- read.table(file, sep = "\t", dec = ".", 
-    header = TRUE, na.strings="NA")
+                      header = TRUE, na.strings="NA")
 str(assdist)
 dd<- assdist$dist
 # With function mykernel.
