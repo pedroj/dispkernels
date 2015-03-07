@@ -7,11 +7,13 @@ ddGC<- rweibull(1000, shape= 0.7, scale = 3.0) # Weibull distrib.
 mydd<- data.frame(ddTF,ddGC)
 
 ggplot(mydd, aes(x=ddGC)) +
+    theme_bw() +
     geom_histogram(aes(y = ..density..), 
                    binwidth=density(mydd$ddGC)$bw,
                    fill="blue", alpha = 0.5) +
     geom_density(fill="red", alpha = 0.2) +
 #    theme_bw() +
+    geom_rug(sides="b", color="red") +
     xlab('Distance (m)') +
     ylab('Probability')
 

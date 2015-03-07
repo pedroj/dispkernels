@@ -15,13 +15,13 @@ source(file)
 # dd<- rweibull(1000, shape= 1, scale = 3.5)   # Weibull distrib.
 # dd<- rgamma(1000, scale= 100, shape= 10)     # Gamma distrib.
                                                # req. adehabitatHS
-dd<- as.data.frame(simm.levy(1:1000, mu = 1.5, burst = "mu = 1.5")) 
+dd<- as.data.frame(simm.levy(1:1000, mu = 1.1, burst = "mu = 1.5")) 
 dd<- na.omit(dd$dist)
 
 # With function mykernel.
 mykernel(dd, bw= 20, h= 200)     # Extract the distances vector
-ddtrunc=dd[dd<3000]              # Truncate below a distance
-mykernel(ddtrunc, bw= 10, h= 20) # Extract the distances vector
+ddtrunc=dd[dd<1000]              # Truncate below a distance
+mykernel(ddtrunc, bw= 5, h= 5) # Extract the distances vector
 
 gevdd<-gev.fit(dd)
 gev.diag(gevdd)
@@ -32,7 +32,7 @@ require(downloader)
 link = "https://raw.githubusercontent.com/pedroj/dispkernels/master/distances.txt"
 file = "distances.txt"
 if(!file.exists(file)) download(link, file, mode = "wb")
-assdist <- read.table(file, sep = "\t", dec = ".", 
+assdist <- read.table(file, sep = "\t", dec = ",", 
                       header = TRUE, na.strings="NA")
 str(assdist)
 dd<- assdist$dist
