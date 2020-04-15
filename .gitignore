@@ -4,3 +4,4 @@
 .Rproj
 mySankey.R
 *.png
+.DS_Store
